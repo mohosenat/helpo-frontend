@@ -29,6 +29,21 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+function getDhakaDate() {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Asia/Dhaka",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+
+  const dateParts = Object.fromEntries(
+    parts.map(({ type, value }) => [type, value]),
+  );
+
+  return `${dateParts.year}-${dateParts.month}-${dateParts.day}`;
+}
+
 export default function CreateEvent() {
   const { data: session } = authClient.useSession();
   const router = useRouter();
@@ -44,7 +59,13 @@ export default function CreateEvent() {
 
   const [busy, setBusy] = useState(false);
 
-  const minDate = new Date(Date.now() + 86400000).toISOString().slice(0, 10);
+  const minDate = (() => {
+    const [year, month, day] = getDhakaDate().split("-").map(Number);
+
+    const tomorrow = new Date(Date.UTC(year, month - 1, day + 1));
+
+    return tomorrow.toISOString().slice(0, 10);
+  })();
 
   function change(k: string, v: string) {
     setForm((previous) => ({ ...previous, [k]: v }));
@@ -58,7 +79,7 @@ export default function CreateEvent() {
       return;
     }
 
-    if (form.date <= new Date().toISOString().slice(0, 10)) {
+    if (form.date <= getDhakaDate()) {
       toast.error("Choose a future date");
       return;
     }
