@@ -97,7 +97,7 @@ export default function CreateEvent() {
       <div className="mx-auto max-w-3xl">
         {/* Heading */}
         <div className="mb-8 text-center">
-          <span className="mb-3 inline-block rounded-full bg-orange-80 px-4 py-2 text-xs font-extrabold tracking-[0.15em] text-[#F15A24] dark:bg-orange-500/10 dark:text-orange-400">
+          <span className="mb-3 inline-block rounded-full bg-orange-300/10 px-4 py-2 text-xs font-extrabold tracking-[0.15em] text-[#F15A24] dark:bg-orange-500/10 dark:text-orange-400">
             START SOMETHING GOOD
           </span>
 
@@ -166,17 +166,26 @@ export default function CreateEvent() {
                         <SelectValue placeholder="Select event type" />
                       </SelectTrigger>
 
-                      <SelectContent>
+                      <SelectContent
+                        sideOffset={8}
+                        className="min-w-[var(--radix-select-trigger-width)] rounded-xl border border-gray-200 bg-white p-2 shadow-[0_12px_35px_rgba(0,0,0,0.12)] dark:border-white/10 dark:bg-[#1B1E21]"
+                      >
                         {[
                           "Cleanup",
                           "Plantation",
                           "Donation",
                           "Education",
                           "Community",
+                          "Health Camp",
+                          "Winter Relief",
                           "Food Distribution",
                           "Other",
                         ].map((type) => (
-                          <SelectItem key={type} value={type}>
+                          <SelectItem
+                            key={type}
+                            value={type}
+                            className="mb-1 cursor-pointer rounded-lg px-3 py-2.5 text-sm font-medium text-[#252525] outline-none transition-colors focus:bg-orange-50 focus:text-[#FF6500] data-[state=checked]:bg-orange-50 data-[state=checked]:text-[#FF6500] dark:text-gray-200 dark:focus:bg-orange-500/10 dark:focus:text-orange-400 dark:data-[state=checked]:bg-orange-500/10 dark:data-[state=checked]:text-orange-400"
+                          >
                             {type}
                           </SelectItem>
                         ))}
