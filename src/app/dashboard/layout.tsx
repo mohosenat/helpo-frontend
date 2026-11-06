@@ -19,23 +19,5 @@ export default function DashboardLayout({
         <div className="skeleton" />
       </div>
     );
-  return (
-    <>
-      <div className="container toolbar">
-        <Link className="btn small" href="/dashboard/create">
-          Create
-        </Link>
-        <Link className="btn small ghost" href="/dashboard/manage">
-          Manage
-        </Link>
-        <Link className="btn small ghost" href="/dashboard/joined">
-          Joined
-        </Link>
-        <Link className="btn small ghost" href="/dashboard/profile">
-          Profile
-        </Link>
-      </div>
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

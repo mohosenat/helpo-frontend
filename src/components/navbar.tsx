@@ -32,10 +32,19 @@ export function Navbar() {
   }, []);
 
   async function logout() {
-    await authClient.signOut();
-    setMenuOpen(false);
-    router.push("/");
-    router.refresh();
+    try {
+      await authClient.signOut();
+
+      await fetch("/api/auth/proxy-session", {
+        method: "DELETE",
+      });
+
+      setMenuOpen(false);
+      router.push("/");
+      router.refresh();
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   }
 
   function toggleTheme() {

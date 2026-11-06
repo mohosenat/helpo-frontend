@@ -40,6 +40,25 @@ export default function Login() {
         return;
       }
 
+      const tokenResult = await authClient.token();
+      const token = tokenResult.data?.token;
+
+      if (!token) {
+        throw new Error("Unable to generate authentication token");
+      }
+
+      const proxyResponse = await fetch("/api/auth/proxy-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token }),
+      });
+
+      if (!proxyResponse.ok) {
+        throw new Error("Unable to create proxy session");
+      }
+
       toast.success("Welcome back!");
       router.push("/");
       router.refresh();
