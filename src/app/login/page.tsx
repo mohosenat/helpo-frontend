@@ -73,11 +73,16 @@ export default function Login() {
     setGoogleBusy(true);
 
     try {
+      const frontendURL = window.location.origin;
+
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: `${window.location.origin}/`,
+        callbackURL: `${frontendURL}/`,
+        newUserCallbackURL: `${frontendURL}/`,
+        errorCallbackURL: `${frontendURL}/login`,
       });
-    } catch {
+    } catch (error) {
+      console.error("Google sign-in failed:", error);
       toast.error("Google sign-in failed. Please try again.");
       setGoogleBusy(false);
     }
