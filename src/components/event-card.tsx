@@ -19,21 +19,23 @@ export function EventCard({ event }: { event: EventItem }) {
     <article className="event-card">
       <div className="event-photo">
         <img src={event.image} alt={event.title} />
-
-        <span className="pill">{event.type}</span>
-
-        <span className="event-date">
-          <CalendarDays size={14} />
-          {new Date(event.date).toLocaleDateString("en-US", {
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-            timeZone: "UTC",
-          })}
-        </span>
       </div>
 
       <div className="event-info">
+        <div className="event-meta">
+          <span className="pill">{event.type}</span>
+
+          <span className="event-date">
+            <CalendarDays size={14} />
+            {new Date(event.date).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+              timeZone: "UTC",
+            })}
+          </span>
+        </div>
+
         <h3>{event.title}</h3>
 
         <div className="event-location">
