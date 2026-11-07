@@ -109,7 +109,7 @@ export default function Manage() {
                     disabled={deletingId === event._id}
                     title="Delete event"
                     aria-label={`Delete ${event.title}`}
-                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/60 bg-white/95 text-red-500 shadow-lg backdrop-blur-md transition hover:-translate-y-1 hover:bg-red-500 hover:text-white disabled:cursor-not-allowed disabled:opacity-50 dark:border-white/10 dark:bg-[#1B1E21]/95 dark:text-red-400 dark:hover:bg-red-500 dark:hover:text-white"
+                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/60 bg-white/95 text-red-500 shadow-lg backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-red-500 hover:text-white disabled:cursor-not-allowed disabled:opacity-50 dark:border-white/10 dark:bg-[#1B1E21]/95 dark:text-red-400 dark:hover:bg-red-500 dark:hover:text-white"
                   >
                     {deletingId === event._id ? (
                       <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
