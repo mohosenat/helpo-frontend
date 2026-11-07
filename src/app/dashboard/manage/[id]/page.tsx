@@ -54,7 +54,7 @@ export default function EditEvent() {
   return (
     <div className="page-wrap">
       <form className="panel form-card" onSubmit={submit}>
-        <h1 className="mb-6 text-center text-3xl font-extrabold tracking-tight text-[var(--text)]">
+        <h1 className="mb-5 text-center text-2xl font-semibold tracking-tight text-black">
           Update Event
         </h1>{" "}
         {Object.entries(f).map(([k, v]) => (
@@ -75,6 +75,9 @@ export default function EditEvent() {
                   "Donation",
                   "Education",
                   "Community",
+                  "Health Camp",
+                  "Winter Relief",
+                  "Food Distribution",
                   "Other",
                 ].map((x) => (
                   <option key={x}>{x}</option>
@@ -90,9 +93,11 @@ export default function EditEvent() {
             )}
           </div>
         ))}
-        <button className="btn mx-auto block" disabled={busy}>
-          {busy ? "Saving..." : "Save changes"}
-        </button>
+        <div className="flex justify-center w-full">
+          <button className="btn mx-auto block" disabled={busy}>
+            {busy ? "Saving..." : "Save changes"}
+          </button>
+        </div>
       </form>
     </div>
   );
