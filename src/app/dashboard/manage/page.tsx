@@ -19,19 +19,58 @@ export default function Manage() {
 
   const [items, setItems] = useState<EventItem[]>([]);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [loaded, setLoaded] = useState(false);
 
   async function load() {
     try {
       const d = await api<{ events: EventItem[] }>("/events/mine");
+
       setItems(d.events || []);
+
+      localStorage.setItem(
+        "helpo-manage-events",
+        JSON.stringify(d.events || []),
+      );
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Failed to load events");
+    } finally {
+      setLoaded(true);
     }
   }
 
   useEffect(() => {
-    if (session) load();
-  }, [session]);
+    if (!session?.user?.email) return;
+
+    const cacheKey = `helpo-manage-events-${session.user.email}`;
+
+    const cached = localStorage.getItem(cacheKey);
+
+    if (cached) {
+      try {
+        setItems(JSON.parse(cached));
+      } catch {
+        localStorage.removeItem(cacheKey);
+      }
+    }
+
+    async function refreshEvents() {
+      try {
+        const d = await api<{ events: EventItem[] }>("/events/mine");
+        const events = d.events || [];
+
+        setItems(events);
+        localStorage.setItem(cacheKey, JSON.stringify(events));
+      } catch (e) {
+        if (!cached) {
+          toast.error(e instanceof Error ? e.message : "Failed to load events");
+        }
+      } finally {
+        setLoaded(true);
+      }
+    }
+
+    refreshEvents();
+  }, [session?.user?.email]);
 
   async function remove(id: string) {
     const confirmed = window.confirm(
@@ -81,10 +120,10 @@ export default function Manage() {
           </p>
 
           {/* Event Count */}
-          {/* <div className="mt-5 inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-[var(--muted)]">
+          <div className="mt-5 inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-[var(--muted)]">
             <CalendarDays size={17} className="text-[#FF6A00]" />
             {items.length} {items.length === 1 ? "Event" : "Events"} Created
-          </div> */}
+          </div>
         </div>
 
         {/* Event Cards */}
@@ -121,6 +160,16 @@ export default function Manage() {
 
                 <EventCard event={event} />
               </div>
+            ))}
+          </div>
+        ) : !loaded ? (
+          // Loading Skeleton
+          <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            {[1, 2, 3].map((item) => (
+              <div
+                key={item}
+                className="h-[380px] animate-pulse rounded-2xl border border-[var(--line)] bg-[var(--card)]"
+              />
             ))}
           </div>
         ) : (
