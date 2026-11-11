@@ -64,11 +64,16 @@ export default function Register() {
     setGoogleBusy(true);
 
     try {
+      const frontendURL = window.location.origin;
+
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: "/",
+        callbackURL: `${frontendURL}/auth/callback`,
+        newUserCallbackURL: `${frontendURL}/auth/callback`,
+        errorCallbackURL: `${frontendURL}/register`,
       });
-    } catch {
+    } catch (error) {
+      console.error("Google registration failed:", error);
       toast.error("Google sign-up failed. Please try again.");
       setGoogleBusy(false);
     }
