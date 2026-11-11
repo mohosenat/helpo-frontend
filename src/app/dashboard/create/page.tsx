@@ -45,7 +45,7 @@ function getDhakaDate() {
 }
 
 export default function CreateEvent() {
-  const { data: session } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
   const router = useRouter();
 
   const [form, setForm] = useState({
@@ -73,6 +73,11 @@ export default function CreateEvent() {
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (isPending) {
+      toast.info("Please wait, checking your login...");
+      return;
+    }
 
     if (!session?.user) {
       router.push("/login");
