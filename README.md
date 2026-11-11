@@ -91,8 +91,6 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-```
-
 ## 🔗 Related Repository
 
 The backend API and database operations are maintained in a separate repository.
@@ -104,17 +102,3 @@ The backend API and database operations are maintained in a separate repository.
 We believe that small acts of kindness can create meaningful changes. Helpo makes it easier for people to connect, collaborate, and contribute to a better society.
 
 **Helpo — Helping Hands, Stronger Communities.**
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
