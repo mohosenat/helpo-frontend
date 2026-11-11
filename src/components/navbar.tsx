@@ -53,23 +53,25 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-black/5 bg-white/90 backdrop-blur-xl dark:border-white/10 dark:bg-[#111315]/90">
-      <div className="relative mx-auto grid h-20 max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-3 sm:h-20 sm:px-6 lg:px-8">
         {/* Logo - Left */}
         <Link
           href="/"
           className="flex w-fit items-center gap-2 text-2xl font-extrabold tracking-tight text-[#171717] dark:text-white"
         >
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#FF4D00] to-[#FFAA00] text-white shadow-md">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#FF4D00] to-[#FFAA00] text-white shadow-md sm:h-10 sm:w-10">
             <HeartHandshake size={23} />
           </span>
-          helpo<span className="-ml-2 text-[#FF4D00]">.</span>
+          <span className="hidden sm:inline">
+            helpo<span className="-ml-2 text-[#FF4D00]">.</span>
+          </span>
         </Link>
 
         {/* Upcoming Events - Center */}
         <nav className="flex items-center justify-center">
           <Link
             href="/events"
-            className="flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-gray-700 transition hover:bg-orange-50 hover:text-[#FF4D00] dark:text-gray-200 dark:hover:bg-white/10 dark:hover:text-[#FFAA00] sm:px-5"
+            className="flex items-center gap-1.5 rounded-full px-2 py-2 text-xs font-semibold text-gray-700 transition hover:bg-orange-50 hover:text-[#FF4D00] dark:text-gray-200 dark:hover:bg-white/10 dark:hover:text-[#FFAA00] sm:gap-2 sm:px-5 sm:text-sm"
           >
             <CalendarDays size={18} />
             <span className="hidden sm:inline">Upcoming Events</span>
@@ -78,14 +80,14 @@ export function Navbar() {
         </nav>
 
         {/* Right Side Actions */}
-        <div className="flex items-center justify-end gap-2 sm:gap-4">
+        <div className="flex items-center justify-end gap-1.5 sm:gap-4">
           {/* Theme Toggle */}
           <button
             type="button"
             onClick={toggleTheme}
             disabled={!mounted}
             aria-label="Toggle theme"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-700 transition hover:bg-orange-50 hover:text-[#FF4D00] disabled:opacity-60 dark:border-white/10 dark:text-gray-200 dark:hover:bg-white/10 dark:hover:text-[#FFAA00]"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gray-200 text-gray-700 transition hover:bg-orange-50 hover:text-[#FF4D00] disabled:opacity-60 dark:border-white/10 dark:text-gray-200 dark:hover:bg-white/10 dark:hover:text-[#FFAA00] sm:h-10 sm:w-10"
           >
             {mounted && theme === "dark" ? (
               <Sun size={19} />
@@ -104,21 +106,29 @@ export function Navbar() {
                   onClick={() => setMenuOpen(!menuOpen)}
                   aria-label="Open profile menu"
                   aria-expanded={menuOpen}
-                  className="flex items-center gap-2 rounded-full border border-gray-200 p-1 transition hover:border-[#FF4D00] dark:border-white/10 dark:hover:border-[#FFAA00]"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 p-0.5 transition hover:border-[#FF4D00] dark:border-white/10 dark:hover:border-[#FFAA00] sm:h-auto sm:w-auto sm:gap-2 sm:p-1"
                 >
                   {user.image ? (
                     <img
                       src={user.image}
                       alt={user.name || "Profile"}
-                      className="h-9 w-9 rounded-full object-cover"
+                      className="hidden h-9 w-9 rounded-full object-cover sm:block"
                     />
                   ) : (
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#FF4D00] to-[#FFAA00] font-bold text-white">
+                    <span className="hidden h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#FF4D00] to-[#FFAA00] font-bold text-white sm:flex">
                       {(user.name || "U").slice(0, 1).toUpperCase()}
                     </span>
                   )}
 
-                  <ChevronDown size={15} className="mr-1 text-gray-500" />
+                  <UserRound
+                    size={19}
+                    className="text-gray-700 dark:text-gray-200 sm:hidden"
+                  />
+
+                  <ChevronDown
+                    size={15}
+                    className="mr-1 hidden text-gray-500 sm:block"
+                  />
                 </button>
 
                 {menuOpen && (
@@ -130,7 +140,7 @@ export function Navbar() {
                       onClick={() => setMenuOpen(false)}
                     />
 
-                    <div className="absolute right-0 top-14 z-50 w-60 overflow-hidden rounded-2xl border border-gray-100 bg-white p-2 shadow-xl dark:border-white/10 dark:bg-[#1B1E21]">
+                    <div className="absolute right-0 top-12 z-50 w-60 overflow-hidden rounded-2xl border border-gray-100 bg-white p-2 shadow-xl dark:border-white/10 dark:bg-[#1B1E21] sm:top-14">
                       <div className="border-b border-gray-100 px-3 py-3 dark:border-white/10">
                         <p className="truncate font-semibold text-gray-900 dark:text-white">
                           {user.name || "User"}
@@ -176,27 +186,37 @@ export function Navbar() {
                           <UserRound size={17} />
                           Profile
                         </Link>
+
+                        {/* Mobile Logout */}
+                        <button
+                          type="button"
+                          onClick={logout}
+                          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-red-500 transition hover:bg-red-50 dark:hover:bg-red-500/10 sm:hidden"
+                        >
+                          <LogOut size={17} />
+                          Logout
+                        </button>
                       </div>
                     </div>
                   </>
                 )}
               </div>
 
-              {/* Logout */}
+              {/* Desktop Logout */}
               <button
                 type="button"
                 onClick={logout}
-                className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#FF4D00] to-[#FFAA00] px-3 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:px-5"
+                className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-[#FF4D00] to-[#FFAA00] px-3 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:flex sm:px-5"
               >
                 <LogOut size={16} />
-                <span className="hidden sm:inline">Logout</span>
+                <span>Logout</span>
               </button>
             </>
           ) : (
             /* Logged Out */
             <Link
               href="/login"
-              className="rounded-full bg-gradient-to-r from-[#FF4D00] to-[#FFAA00] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+              className="rounded-full bg-gradient-to-r from-[#FF4D00] to-[#FFAA00] px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:px-5 sm:py-2.5 sm:text-sm"
             >
               Login
             </Link>
