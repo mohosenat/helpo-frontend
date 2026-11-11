@@ -73,13 +73,11 @@ export default function Login() {
     setGoogleBusy(true);
 
     try {
-      const frontendURL = window.location.origin;
-
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: `${frontendURL}/auth/callback`,
-        newUserCallbackURL: `${frontendURL}/auth/callback`,
-        errorCallbackURL: `${frontendURL}/login`,
+        callbackURL: `${window.location.origin}/auth/callback`,
+        newUserCallbackURL: `${window.location.origin}/auth/callback`,
+        errorCallbackURL: `${window.location.origin}/login`,
       });
     } catch (error) {
       console.error("Google sign-in failed:", error);
