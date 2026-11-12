@@ -118,9 +118,12 @@ export default function DashboardSidebar() {
           {/* Back to Home */}
           <Link
             href="/"
-            className="flex w-full items-center gap-3 rounded-full px-5 py-3.5 text-sm font-semibold text-[var(--muted)] transition-all duration-300 hover:bg-orange-50 hover:text-[#FF6500]"
+            className="group flex w-full items-center gap-3 rounded-full px-5 py-3.5 text-sm font-semibold text-[var(--muted)] transition-all duration-300 hover:bg-orange-50 hover:text-[#FF6500] dark:hover:bg-orange-500/10 dark:hover:text-[#FF6A00]"
           >
-            <Home size={19} className="text-[#FF6500]" />
+            <Home
+              size={19}
+              className="text-[#FF6500] dark:group-hover:text-[#FF6A00]"
+            />
             Back to Home
           </Link>
 
@@ -128,7 +131,7 @@ export default function DashboardSidebar() {
           <button
             type="button"
             onClick={handleLogout}
-            className="flex w-full items-center gap-3 rounded-full px-5 py-3.5 text-sm font-semibold text-red-500 transition-all duration-300 hover:bg-red-50"
+            className="flex w-full items-center gap-3 rounded-full px-5 py-3.5 text-sm font-semibold text-red-500 transition-all duration-300 hover:bg-red-50 dark:hover:bg-red-500/10 dark:hover:text-red-400"
           >
             <LogOut size={19} />
             Logout
