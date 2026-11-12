@@ -34,8 +34,8 @@ export default function Profile() {
     "pointer-events-none absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[#FF6500]";
 
   return (
-    <div className="min-h-screen bg-[#EDF1F4] px-4 py-12 dark:bg-[#111315] sm:px-6 lg:py-16 lg:-translate-x-[130px]">
-      <div className="mx-auto max-w-2xl">
+    <div className="min-h-screen bg-[#EDF1F4] px-4 py-12 dark:bg-[#111315] sm:px-6 lg:py-16">
+      <div className="mx-auto max-w-2xl lg:-translate-x-[130px]">
         {/* Heading */}
         <div className="mb-8 text-center">
           <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-orange-300/10 px-4 py-2 text-xs font-extrabold tracking-[0.15em] text-[#F15A24] dark:bg-orange-500/10 dark:text-orange-400">

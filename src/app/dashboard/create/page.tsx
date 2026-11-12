@@ -120,7 +120,7 @@ export default function CreateEvent() {
 
   return (
     <div className="min-h-screen bg-[#EDF1F4] px-4 py-12 dark:bg-[#111315] sm:px-6 lg:py-16">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-3xl lg:-translate-x-[130px]">
         {/* Heading */}
         <div className="mb-8 text-center">
           <span className="mb-3 inline-block rounded-full bg-orange-300/10 px-4 py-2 text-xs font-extrabold tracking-[0.15em] text-[#F15A24] dark:bg-orange-500/10 dark:text-orange-400">
