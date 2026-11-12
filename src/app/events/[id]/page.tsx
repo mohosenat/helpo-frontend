@@ -90,6 +90,11 @@ export default function EventDetails() {
   }
 
   async function leave() {
+    if (!session?.user) {
+      router.push("/login");
+      return;
+    }
+
     setBusy(true);
 
     try {

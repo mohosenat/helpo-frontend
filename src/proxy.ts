@@ -33,6 +33,5 @@ export const config = {
     "/dashboard/joined",
     "/dashboard/manage",
     "/dashboard/profile",
-    "/events/:id",
   ],
 };
