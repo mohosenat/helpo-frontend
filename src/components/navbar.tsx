@@ -57,13 +57,14 @@ export function Navbar() {
         {/* Logo - Left */}
         <Link
           href="/"
-          className="flex w-fit items-center gap-2 text-2xl font-extrabold tracking-tight text-[#171717] dark:text-white"
+          className="flex w-fit items-center gap-2 text-xl font-extrabold tracking-tight text-[#171717] dark:text-white sm:text-2xl"
         >
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#FF4D00] to-[#FFAA00] text-white shadow-md sm:h-10 sm:w-10">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#FF4D00] to-[#FFAA00] text-white shadow-md">
             <HeartHandshake size={23} />
           </span>
-          <span className="hidden sm:inline">
-            helpo<span className="-ml-2 text-[#FF4D00]">.</span>
+
+          <span>
+            helpo<span className="text-[#FF4D00]">.</span>
           </span>
         </Link>
 
@@ -73,7 +74,7 @@ export function Navbar() {
             href="/events"
             className="flex items-center gap-1.5 rounded-full px-2 py-2 text-xs font-semibold text-gray-700 transition hover:bg-orange-50 hover:text-[#FF4D00] dark:text-gray-200 dark:hover:bg-white/10 dark:hover:text-[#FFAA00] sm:gap-2 sm:px-5 sm:text-sm"
           >
-            <CalendarDays size={18} />
+            <CalendarDays size={19} />
             <span className="hidden sm:inline">Upcoming Events</span>
             <span className="sm:hidden">Events</span>
           </Link>
@@ -112,18 +113,13 @@ export function Navbar() {
                     <img
                       src={user.image}
                       alt={user.name || "Profile"}
-                      className="hidden h-9 w-9 rounded-full object-cover sm:block"
+                      className="h-9 w-9 rounded-full object-cover"
                     />
                   ) : (
-                    <span className="hidden h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#FF4D00] to-[#FFAA00] font-bold text-white sm:flex">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#FF4D00] to-[#FFAA00] font-bold text-white">
                       {(user.name || "U").slice(0, 1).toUpperCase()}
                     </span>
                   )}
-
-                  <UserRound
-                    size={19}
-                    className="text-gray-700 dark:text-gray-200 sm:hidden"
-                  />
 
                   <ChevronDown
                     size={15}
@@ -191,7 +187,7 @@ export function Navbar() {
                         <button
                           type="button"
                           onClick={logout}
-                          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-red-500 transition hover:bg-red-50 dark:hover:bg-red-500/10 sm:hidden"
+                          className="flex w-full items-center gap-3 rounded-lg bg-gradient-to-r from-[#FF4D00] to-[#FFAA00] px-3 py-2.5 text-sm font-semibold text-white transition hover:shadow-md sm:hidden"
                         >
                           <LogOut size={17} />
                           Logout
@@ -208,7 +204,7 @@ export function Navbar() {
                 onClick={logout}
                 className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-[#FF4D00] to-[#FFAA00] px-3 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:flex sm:px-5"
               >
-                <LogOut size={16} />
+                <LogOut size={17} />
                 <span>Logout</span>
               </button>
             </>
@@ -216,7 +212,7 @@ export function Navbar() {
             /* Logged Out */
             <Link
               href="/login"
-              className="rounded-full bg-gradient-to-r from-[#FF4D00] to-[#FFAA00] px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:px-5 sm:py-2.5 sm:text-sm"
+              className="rounded-full bg-gradient-to-r from-[#FF4D00] to-[#FFAA00] px-3 py-2 text-xs font-semibold !text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:px-5 sm:py-2.5 sm:text-sm"
             >
               Login
             </Link>
