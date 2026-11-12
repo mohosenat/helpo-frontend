@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+
 import {
   PlusCircle,
   CalendarDays,
   Users,
   UserRound,
   LogOut,
+  Home,
 } from "lucide-react";
 
 const navItems = [
@@ -66,8 +68,8 @@ export default function DashboardSidebar() {
               aria-label={item.label}
               className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
                 active
-                  ? "bg-[linear-gradient(110deg,#ff4d00,#ffaa00)] text-white shadow-lg shadow-orange-500/25"
-                  : "bg-[var(--bg)] text-[var(--muted)] hover:bg-orange-500/10 hover:text-[#ff6a00]"
+                  ? "bg-[linear-gradient(110deg,#ff4d00,#ffaa00)] text-white shadow-lg shadow-orange-25"
+                  : "bg-[var(--bg)] text-[#FF6500] hover:bg-orange-50"
               }`}
             >
               <Icon size={19} />
@@ -84,6 +86,7 @@ export default function DashboardSidebar() {
           </p>
         </div>
 
+        {/* Dashboard Navigation */}
         <nav className="flex flex-col gap-3">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -96,21 +99,36 @@ export default function DashboardSidebar() {
                 className={`flex items-center gap-3 rounded-full px-5 py-3.5 text-sm font-semibold transition-all duration-300 ${
                   active
                     ? "bg-[linear-gradient(110deg,#ff4d00,#ffaa00)] text-white shadow-lg shadow-orange-500/20"
-                    : "text-[var(--muted)] hover:bg-orange-500/10 hover:text-[#ff6a00]"
+                    : "text-[var(--muted)] hover:bg-orange-50 hover:text-[#FF6500]"
                 }`}
               >
-                <Icon size={19} />
-                {item.label}
+                <Icon
+                  size={19}
+                  className={active ? "text-white" : "text-[#FF6500]"}
+                />
+
+                <span>{item.label}</span>
               </Link>
             );
           })}
         </nav>
 
-        <div className="mt-auto border-t border-[var(--line)] pt-5">
+        {/* Bottom Actions */}
+        <div className="mt-auto space-y-2 border-t border-[var(--line)] pt-5">
+          {/* Back to Home */}
+          <Link
+            href="/"
+            className="flex w-full items-center gap-3 rounded-full px-5 py-3.5 text-sm font-semibold text-[var(--muted)] transition-all duration-300 hover:bg-orange-50 hover:text-[#FF6500]"
+          >
+            <Home size={19} className="text-[#FF6500]" />
+            Back to Home
+          </Link>
+
+          {/* Logout */}
           <button
             type="button"
             onClick={handleLogout}
-            className="flex w-full items-center gap-3 rounded-full px-5 py-3.5 text-sm font-semibold text-red-500 transition-all hover:bg-red-500/10"
+            className="flex w-full items-center gap-3 rounded-full px-5 py-3.5 text-sm font-semibold text-red-500 transition-all duration-300 hover:bg-red-50"
           >
             <LogOut size={19} />
             Logout

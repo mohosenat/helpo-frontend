@@ -11,7 +11,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
       enableSystem
       disableTransitionOnChange
     >
-      {children}
+      <div className="flex min-h-screen flex-col">{children}</div>
+
       <Toaster richColors position="top-right" />
     </ThemeProvider>
   );
