@@ -96,19 +96,15 @@ export default function DashboardSidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`group flex items-center gap-3 rounded-full px-5 py-3.5 text-sm font-semibold transition-all duration-300 ${
+                className={`flex items-center gap-3 rounded-full px-5 py-3.5 text-sm font-semibold transition-all duration-300 ${
                   active
                     ? "bg-[linear-gradient(110deg,#ff4d00,#ffaa00)] text-white shadow-lg shadow-orange-500/20"
-                    : "text-[var(--muted)] dark:hover:bg-[#FF6500] dark:hover:text-white"
+                    : "text-[var(--muted)] hover:bg-orange-50 hover:text-[#FF6500] dark:hover:bg-orange-500/10 dark:hover:text-[#FF6A00]"
                 }`}
               >
                 <Icon
                   size={19}
-                  className={`${
-                    active
-                      ? "text-white"
-                      : "text-[#FF6500] dark:group-hover:text-white"
-                  }`}
+                  className={active ? "text-white" : "text-[#FF6500]"}
                 />
 
                 <span>{item.label}</span>
