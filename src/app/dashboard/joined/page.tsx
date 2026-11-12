@@ -36,7 +36,7 @@ export default function Joined() {
 
   return (
     <main className="min-h-screen bg-[var(--bg)] py-10 sm:py-14">
-      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1200px] -translate-x-0 px-4 sm:px-6 lg:px-8 lg:-translate-x-[130px]">
         {/* Joined Events Header */}
         <div className="mb-10 rounded-3xl border border-[var(--line)] bg-[var(--card)] px-5 py-10 text-center shadow-[var(--shadow)] sm:px-10 sm:py-12">
           <span className="inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#FF6A00]">
