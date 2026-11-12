@@ -11,6 +11,7 @@ import {
   HandHeart,
 } from "lucide-react";
 import { EventCard, EventItem } from "@/components/event-card";
+import NewsletterForm from "@/components/newsletter-form";
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 async function getEvents(): Promise<EventItem[]> {
   try {
@@ -25,7 +26,7 @@ async function getEvents(): Promise<EventItem[]> {
 export default async function Home() {
   const events = await getEvents();
   return (
-    <>
+    <main className="home-page">
       <section className="container hero">
         <div>
           <span className="eyebrow">A COMMUNITY THAT SHOWS UP</span>
@@ -42,16 +43,16 @@ export default async function Home() {
               Explore events <ArrowUpRight size={18} />
             </Link>
             <Link className="btn ghost" href="/dashboard/create">
-              Start an initiative
+              Create an Event
             </Link>
           </div>
-          <p>
+          {/* <p>
             ♥ &nbsp; Good people. Meaningful work. Every helping hand matters.
-          </p>
+          </p> */}
         </div>
         <div className="hero-image">
           <Image
-            src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=85"
+            src="/assets/banner.jpg"
             alt="Volunteers working together"
             fill
             priority
@@ -131,19 +132,61 @@ export default async function Home() {
           <div>
             <span className="eyebrow">MOMENTS THAT MATTER</span>
             <h2>Our community in action.</h2>
+            <p>
+              Every smile tells a story. Every helping hand makes a difference.
+            </p>
           </div>
+
+          <Link className="text-link" href="/events">
+            Be part of it <ArrowUpRight />
+          </Link>
         </div>
+
         <div className="gallery-grid">
           {[
-            "photo-1469571486292-0ba58a3f068b",
-            "photo-1532629345422-7515f3d16bb6",
-            "photo-1488521787991-ed7bbaae773c",
-          ].map((id) => (
-            <img
-              key={id}
-              src={`https://images.unsplash.com/${id}?auto=format&fit=crop&w=700&q=80`}
-              alt="Community volunteering"
-            />
+            {
+              id: "photo-1469571486292-0ba58a3f068b",
+              title: "Together We Care",
+              category: "Community Support",
+            },
+            {
+              id: "photo-1532629345422-7515f3d16bb6",
+              title: "Sharing Kindness",
+              category: "Helping Hands",
+            },
+            {
+              id: "photo-1488521787991-ed7bbaae773c",
+              title: "Stronger Together",
+              category: "Teamwork",
+            },
+            {
+              id: "photo-1593113598332-cd288d649433",
+              title: "Making A Difference",
+              category: "Volunteering",
+            },
+            {
+              id: "photo-1559027615-cd4628902d4a",
+              title: "A Brighter Future",
+              category: "Education",
+            },
+            {
+              id: "photo-1531206715517-5c0ba140b2b8",
+              title: "Small Acts, Big Impact",
+              category: "Community",
+            },
+          ].map((item) => (
+            <article className="gallery-card" key={item.id}>
+              <img
+                src={`https://images.unsplash.com/${item.id}?auto=format&fit=crop&w=900&q=85`}
+                alt={item.title}
+                loading="lazy"
+              />
+
+              <div className="gallery-caption">
+                <span>{item.category}</span>
+                <h3>{item.title}</h3>
+              </div>
+            </article>
           ))}
         </div>
       </section>
@@ -158,18 +201,9 @@ export default async function Home() {
               Get community stories and upcoming opportunities in your inbox.
             </p>
           </div>
-          <div>
-            <input
-              type="email"
-              placeholder="Your email address"
-              aria-label="Email address"
-            />
-            <button className="btn ghost" type="button">
-              Subscribe
-            </button>
-          </div>
+          <NewsletterForm />
         </div>
       </section>
-    </>
+    </main>
   );
 }

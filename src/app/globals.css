@@ -288,7 +288,7 @@ button {
   position: absolute;
   bottom: 24px;
   left: 24px;
-  color: white;
+  color: #ff6a00;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 2px;
@@ -1716,5 +1716,662 @@ button {
 
   .event-community-note {
     padding: 18px;
+  }
+}
+
+/* =====================================
+   HELPO - PREMIUM HOMEPAGE DESIGN
+===================================== */
+
+.home-page {
+  overflow: hidden;
+}
+
+.home-page .container {
+  width: min(1200px, 90%);
+}
+
+/* Hero */
+
+.home-page .hero {
+  position: relative;
+  padding: 100px 0 110px;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 65px;
+}
+
+.home-page .hero > div:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.home-page .hero h1 {
+  max-width: 650px;
+  font-size: clamp(46px, 5.5vw, 72px);
+  line-height: 1.08;
+  letter-spacing: -3.5px;
+  font-weight: 800;
+}
+
+.home-page .hero p {
+  max-width: 540px;
+  font-size: 15px;
+  line-height: 1.95;
+}
+
+.home-page .hero .actions {
+  margin-top: 32px;
+}
+
+.home-page .hero .btn {
+  min-height: 51px;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.home-page .hero .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px #ff6a0035;
+}
+
+.home-page .hero-image {
+  height: 450px;
+  border-radius: 32px;
+  box-shadow: 0 25px 65px #17203320;
+}
+
+.home-page .hero-image img {
+  transition: transform 0.7s ease;
+}
+
+.home-page .hero-image:hover img {
+  transform: scale(1.04);
+}
+
+/* Section headings */
+
+.home-page .section {
+  padding: 85px 0;
+}
+
+.home-page .section-head {
+  margin-bottom: 38px;
+}
+
+.home-page .section h2 {
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -1.8px;
+}
+
+.home-page .section-head p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* Feature Cards */
+
+.home-page .feature-grid {
+  gap: 22px;
+}
+
+.home-page .feature {
+  position: relative;
+  padding: 32px;
+  border-radius: 24px;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.home-page .feature:hover {
+  transform: translateY(-1px);
+  border-color: #ff9b61;
+  box-shadow: 0 20px 45px #ff6a0014;
+}
+
+.home-page .feature-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #fff0e7, #ffe1ca);
+  color: #ff5b00;
+}
+
+.home-page .feature h3 {
+  margin-top: 23px;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.home-page .feature p {
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+/* Upcoming Event Cards */
+
+.home-page .event-grid {
+  gap: 24px;
+}
+
+.home-page .event-card {
+  border-radius: 24px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.home-page .event-card:hover {
+  transform: translateY(-1px);
+  border-color: #ff9b61;
+  /* box-shadow: 0 20px 45px #ff6a0018; */
+}
+
+.home-page .event-card .event-photo img {
+  transition: transform 0.6s ease;
+}
+
+.home-page .event-card:hover .event-photo img {
+  transform: scale(1.05);
+}
+
+/* Gallery */
+
+.home-page .gallery-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 230px;
+  gap: 20px;
+}
+
+.home-page .gallery-grid > img,
+.home-page .gallery-card {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.home-page .gallery-grid > img {
+  box-shadow: var(--shadow);
+  transition: transform 0.5s ease;
+}
+
+.home-page .gallery-grid > img:hover {
+  transform: scale(1.025);
+}
+
+.home-page .gallery-card {
+  position: relative;
+  isolation: isolate;
+  box-shadow: var(--shadow);
+}
+
+.home-page .gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.home-page .gallery-card:hover img {
+  transform: scale(1.07);
+}
+
+.home-page .gallery-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.78), transparent 70%);
+}
+
+.home-page .gallery-caption {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  padding: 22px;
+  color: white;
+}
+
+.home-page .gallery-caption span {
+  color: #ffb36b;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.home-page .gallery-caption h3 {
+  margin: 7px 0 0;
+  color: white;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* Newsletter */
+
+.home-page .newsletter {
+  position: relative;
+  overflow: hidden;
+  padding: 58px;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 90% 10%, #ffffff30, transparent 30%),
+    linear-gradient(115deg, #ed4b00, #ff9d00);
+  box-shadow: 0 22px 55px #ff6a0025;
+}
+
+.home-page .newsletter h2 {
+  margin: 13px 0;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.home-page .newsletter p {
+  max-width: 440px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.home-page .newsletter input {
+  min-height: 50px;
+  border: 1px solid #ffffff55;
+  outline: none;
+  background: white;
+  color: #171717;
+  box-shadow: 0 8px 25px #00000012;
+}
+
+.home-page .newsletter input:focus {
+  box-shadow: 0 0 0 4px #ffffff35;
+}
+
+.home-page .newsletter .btn {
+  min-height: 48px;
+  padding: 12px 20px;
+  background: #171717;
+  color: white;
+  border: 0;
+  border-radius: 999px;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+/* Dark mode */
+
+.dark .home-page .feature-icon {
+  background: #ff6a001c;
+  color: #ff9a50;
+}
+
+.dark .home-page .feature:hover,
+.dark .home-page .event-card:hover {
+  border-color: #ff8a45;
+}
+
+/* =====================================
+   PREMIUM HOMEPAGE - RESPONSIVE
+===================================== */
+
+/* Tablet */
+@media (max-width: 800px) {
+  .home-page .container {
+    width: 90%;
+  }
+
+  /* Hero */
+  .home-page .hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 60px 0 65px;
+  }
+
+  .home-page .hero > div:first-child {
+    width: 100%;
+  }
+
+  .home-page .hero h1 {
+    max-width: 650px;
+    font-size: clamp(42px, 7vw, 58px);
+    letter-spacing: -2px;
+  }
+
+  .home-page .hero-image {
+    width: 100%;
+    height: 360px;
+    border-radius: 26px;
+  }
+
+  /* Hero Buttons */
+  .home-page .hero .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .home-page .hero .actions .btn {
+    min-height: 46px;
+    padding: 11px 20px;
+    font-size: 14px;
+  }
+
+  /* Sections */
+  .home-page .section {
+    padding: 60px 0;
+  }
+
+  .home-page .section-head {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .home-page .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 200px;
+  }
+
+  /* Newsletter */
+  .home-page .newsletter {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 42px 35px;
+  }
+
+  .home-page .newsletter > div {
+    width: 100%;
+  }
+
+  .home-page .newsletter > div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .home-page .newsletter input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .home-page .newsletter .btn {
+    flex-shrink: 0;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 540px) {
+  .home-page .container {
+    width: 90%;
+  }
+
+  /* Hero */
+  .home-page .hero {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 38px 0 45px;
+  }
+
+  .home-page .hero h1 {
+    font-size: clamp(35px, 9.5vw, 44px);
+    line-height: 1.13;
+    letter-spacing: -1.8px;
+  }
+
+  .home-page .hero p {
+    max-width: 100%;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .home-page .hero .actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  /* Compact Hero Buttons */
+  .home-page .hero .actions .btn {
+    width: auto;
+    min-height: 42px;
+    padding: 10px 15px;
+    font-size: 12px;
+    border-radius: 999px;
+    gap: 6px;
+  }
+
+  .home-page .hero .actions .btn svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .home-page .hero-image {
+    width: 100%;
+    height: 245px;
+    min-height: 245px;
+    border-radius: 20px;
+  }
+
+  /* Section Headings */
+  .home-page .section {
+    padding: 42px 0;
+  }
+
+  .home-page .section-head {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .home-page .section-head > div {
+    width: 100%;
+  }
+
+  .home-page .section h2 {
+    font-size: 27px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+  }
+
+  .home-page .section-head p {
+    font-size: 13px;
+  }
+
+  .home-page .section-head .text-link {
+    font-size: 13px;
+  }
+
+  /* Feature Cards */
+  .home-page .feature-grid,
+  .home-page .event-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .home-page .feature {
+    padding: 24px;
+    border-radius: 19px;
+  }
+
+  /* Gallery */
+  .home-page .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 145px;
+    gap: 10px;
+  }
+
+  .home-page .gallery-grid > img,
+  .home-page .gallery-card {
+    border-radius: 15px;
+  }
+
+  .home-page .gallery-caption {
+    padding: 10px;
+  }
+
+  .home-page .gallery-caption span {
+    font-size: 8px;
+  }
+
+  .home-page .gallery-caption h3 {
+    font-size: 12px;
+  }
+
+  /* Newsletter */
+
+  .home-page .newsletter {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 36px;
+    padding: 58px;
+    border-radius: 30px;
+    background:
+      radial-gradient(circle at 90% 10%, #ffffff30, transparent 30%),
+      linear-gradient(115deg, #ed4b00, #ff9d00);
+    box-shadow: 0 22px 55px #ff6a0025;
+  }
+
+  .home-page .newsletter > div:first-child {
+    min-width: 0;
+  }
+
+  .home-page .newsletter h2 {
+    margin: 13px 0;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+  }
+
+  .home-page .newsletter p {
+    max-width: 440px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .home-page .newsletter form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .home-page .newsletter input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    min-height: 50px;
+    border: 1px solid #ffffff55;
+    outline: none;
+    background: white;
+    color: #171717;
+    box-shadow: 0 8px 25px #00000012;
+    border-radius: 999px;
+    padding: 0 16px;
+  }
+
+  .home-page .newsletter input:focus {
+    box-shadow: 0 0 0 4px #ffffff35;
+  }
+
+  .home-page .newsletter .btn {
+    min-height: 48px;
+    padding: 12px 20px;
+    background: #171717;
+    color: white;
+    border: 0;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+}
+/* Small Mobile */
+@media (max-width: 380px) {
+  .home-page .hero h1 {
+    font-size: 34px;
+  }
+
+  .home-page .hero .actions {
+    gap: 8px;
+  }
+
+  .home-page .hero .actions .btn {
+    padding: 9px 11px;
+    font-size: 11px;
+  }
+
+  .home-page .hero-image {
+    height: 215px;
+    min-height: 215px;
+  }
+
+  .home-page .newsletter {
+    padding: 24px 16px;
+  }
+
+  .home-page .newsletter h2 {
+    font-size: 23px;
+  }
+}
+
+/* Center Subscribe Button on Mobile */
+@media (max-width: 540px) {
+  .home-page .newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+
+  .home-page .newsletter form {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .home-page .newsletter form input {
+    width: 100%;
+    min-height: 44px;
+    height: 44px;
+    padding: 0 16px;
+    font-size: 13px;
+  }
+
+  .home-page .newsletter form .btn {
+    width: fit-content;
+    min-height: 40px;
+    align-self: center;
+    padding: 9px 17px;
+    font-size: 12px;
+  }
+}
+/* Newsletter Desktop Spacing */
+@media (min-width: 801px) {
+  .home-page .newsletter {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 42px 35px;
+  }
+
+  .home-page .newsletter form {
+    justify-content: flex-start;
   }
 }
