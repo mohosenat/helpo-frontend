@@ -52,7 +52,7 @@ export default function EditEvent() {
     }
   }
   return (
-    <div className="page-wrap">
+    <div className="page-wrap lg:-translate-x-[130px]">
       <form className="panel form-card" onSubmit={submit}>
         <h1 className="mb-5 text-center text-2xl font-semibold tracking-tight text-black">
           Update Event
